@@ -14,12 +14,12 @@ var (
 
 // Connect establishes a connection to the MySQL database
 func Connect() {
-	dsn := "shubham:Shubham@123/bookstore?charset=utf8&parseTime=True&loc=Local"
+	dsn := "shubham:Shubham@123@tcp(localhost:3306)/bookstore?charset=utf8&parseTime=True&loc=Local"
 	
 	var err error
 	
 	// Try connecting with retry logic
-	for i := 0; i < 3; i++ {
+	for i := range 3 {
 		db, err = gorm.Open("mysql", dsn)
 		if err == nil {
 			break
